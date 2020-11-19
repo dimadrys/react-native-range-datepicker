@@ -7,6 +7,7 @@ import {
     FlatList,
     StyleSheet,
     Button,
+    TouchableOpacity
 } from 'react-native';
 import Month from './Month';
 // import styles from './styles';
@@ -71,6 +72,7 @@ export default class RangeDatepicker extends Component {
         selectionStyles: {fontSize: 34, color: '#666'},
         selectionContainerStyles: {},
         selectionFormat: 'MM DD',
+        buttonText: 'Apply Date Range',
         showButton: true,
     };
 
@@ -104,6 +106,7 @@ export default class RangeDatepicker extends Component {
         selectedTextColor: PropTypes.string,
         todayColor: PropTypes.string,
         infoText: PropTypes.string,
+        buttonText: PropTypes.string,
         infoStyle: PropTypes.object,
         infoContainerStyle: PropTypes.object,
         showSelectionInfo: PropTypes.bool,
@@ -289,10 +292,11 @@ export default class RangeDatepicker extends Component {
                     this.props.showButton ?
                         (
                             <View style={[styles.buttonWrapper, this.props.buttonContainerStyle]}>
-                                <Button
-                                    title="Select Date"
+                                <TouchableOpacity
                                     onPress={this.handleConfirmDate}
-                                    color={{...this.props.buttonColor, ...this.props.buttonStyles}}/>
+                                    style={this.props.buttonStyles}>
+                                    <Text>{this.props.buttonText}</Text>
+                                </TouchableOpacity>
                             </View>
                         ) : null
                 }

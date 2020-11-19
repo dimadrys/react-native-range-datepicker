@@ -39,8 +39,7 @@ export default class Day extends React.Component {
             case "first" :
                 dayStyle = {
                     backgroundColor: dayProps.firstLastDaysBg,
-                    borderBottomLeftRadius: Math.floor(DEVICE_WIDTH / 7),
-                    borderTopLeftRadius: Math.floor(DEVICE_WIDTH / 7),
+                    borderRadius: Math.floor(DEVICE_WIDTH / 7),
                     width: "14.28%"
                 }
                 textDayStyle = {color: dayProps.selectedTextColor};
@@ -48,8 +47,7 @@ export default class Day extends React.Component {
             case "last" :
                 dayStyle = {
                     backgroundColor: dayProps.firstLastDaysBg,
-                    borderBottomRightRadius: Math.floor(DEVICE_WIDTH / 7),
-                    borderTopRightRadius: Math.floor(DEVICE_WIDTH / 7),
+                    borderRadius: Math.floor(DEVICE_WIDTH / 7),
                     width: "14.28%"
                 }
                 textDayStyle = {color: dayProps.selectedTextColor};
