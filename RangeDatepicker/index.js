@@ -291,7 +291,7 @@ export default class RangeDatepicker extends Component {
                 {
                     this.props.showButton ?
                         (
-                            <View style={[styles.buttonWrapper, this.props.buttonContainerStyle]}>
+                            <View style={{...styles.buttonWrapper, ...this.props.buttonContainerStyle}}>
                                 <TouchableOpacity
                                     onPress={this.handleConfirmDate}
                                     style={this.props.buttonStyles}>
