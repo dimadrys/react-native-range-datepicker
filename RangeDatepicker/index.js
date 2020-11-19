@@ -37,6 +37,7 @@ export default class RangeDatepicker extends Component {
         buttonTextStyle: {},
         buttonStyles: {},
         buttonContainerStyle: {},
+        mainWrapper: {},
         showReset: true,
         showClose: true,
         showDays: true,
@@ -87,6 +88,7 @@ export default class RangeDatepicker extends Component {
         buttonColor: PropTypes.string,
         buttonTextStyle: PropTypes.object,
         buttonStyles: PropTypes.object,
+        mainWrapper: PropTypes.object,
         buttonContainerStyle: PropTypes.object,
         startDate: PropTypes.string,
         untilDate: PropTypes.string,
@@ -228,69 +230,67 @@ export default class RangeDatepicker extends Component {
 
     render() {
         return (
-            <View>
-                <View style={{backgroundColor: "#ffffff", borderRadius: 6, zIndex: 1000, alignSelf: 'center', width: '100%', flex: 1}}>
-                    {
-                        this.props.showClose || this.props.showReset ?
-                            (<View style={{
+            <View style={{backgroundColor: "#ffffff", borderRadius: 6, zIndex: 1000, alignSelf: 'center', width: '100%', flex: 1, ...this.props.mainWrapper}}>
+                {
+                    this.props.showClose || this.props.showReset ?
+                        (<View style={{
+                            flexDirection: 'row',
+                            justifyContent: "space-between",
+                            padding: 20,
+                            paddingBottom: 10
+                        }}>
+                            {
+                                this.props.showClose &&
+                                <Text style={{fontSize: 20}} onPress={this.props.onClose}>Close</Text>
+                            }
+                            {
+                                this.props.showReset && <Text style={{fontSize: 20}} onPress={this.onReset}>Reset</Text>
+                            }
+                        </View>)
+                        :
+                        null
+                }
+                {
+                    this.props.showSelectionInfo ?
+                        (
+                            <View style={{
                                 flexDirection: 'row',
                                 justifyContent: "space-between",
-                                padding: 20,
-                                paddingBottom: 10
+                                paddingHorizontal: 20,
+                                paddingBottom: 5,
+                                alignItems: 'center', ...this.props.selectionContainerStyles
                             }}>
-                                {
-                                    this.props.showClose &&
-                                    <Text style={{fontSize: 20}} onPress={this.props.onClose}>Close</Text>
-                                }
-                                {
-                                    this.props.showReset && <Text style={{fontSize: 20}} onPress={this.onReset}>Reset</Text>
-                                }
-                            </View>)
-                            :
-                            null
-                    }
-                    {
-                        this.props.showSelectionInfo ?
-                            (
-                                <View style={{
-                                    flexDirection: 'row',
-                                    justifyContent: "space-between",
-                                    paddingHorizontal: 20,
-                                    paddingBottom: 5,
-                                    alignItems: 'center', ...this.props.selectionContainerStyles
-                                }}>
-                                    <Text
-                                        style={this.props.selectionStyles}>{`${this.state.startDate ? moment(this.state.startDate).format(this.props.selectionFormat) : this.props.placeHolderStart}`}</Text>
-                                    <Text style={this.props.selectionStyles}>{` ${this.props.placeHolderSeparator} `}</Text>
-                                    <Text
-                                        style={this.props.selectionStyles}>{`${this.state.untilDate ? moment(this.state.untilDate).format(this.props.selectionFormat) : this.props.placeHolderUntil}`}</Text>
-                                </View>
-                            ) : null
-                    }
+                                <Text
+                                    style={this.props.selectionStyles}>{`${this.state.startDate ? moment(this.state.startDate).format(this.props.selectionFormat) : this.props.placeHolderStart}`}</Text>
+                                <Text style={this.props.selectionStyles}>{` ${this.props.placeHolderSeparator} `}</Text>
+                                <Text
+                                    style={this.props.selectionStyles}>{`${this.state.untilDate ? moment(this.state.untilDate).format(this.props.selectionFormat) : this.props.placeHolderUntil}`}</Text>
+                            </View>
+                        ) : null
+                }
 
+                {
+                    this.props.infoText != "" &&
+                    <View style={this.props.infoContainerStyle}>
+                        <Text style={this.props.infoStyle}>{this.props.infoText}</Text>
+                    </View>
+                }
+                {this.props.showDays ? (<View style={styles.dayHeader}>
                     {
-                        this.props.infoText != "" &&
-                        <View style={this.props.infoContainerStyle}>
-                            <Text style={this.props.infoStyle}>{this.props.infoText}</Text>
-                        </View>
+                        this.props.dayHeadings.map((day, i) => {
+                            return (<Text style={{width: "14.28%", textAlign: 'center'}} key={i}>{day}</Text>)
+                        })
                     }
-                    {this.props.showDays ? (<View style={styles.dayHeader}>
-                        {
-                            this.props.dayHeadings.map((day, i) => {
-                                return (<Text style={{width: "14.28%", textAlign: 'center'}} key={i}>{day}</Text>)
-                            })
-                        }
-                    </View>) : null}
-                    <FlatList
-                        style={{flex: 1}}
-                        data={this.getMonthStack()}
-                        renderItem={({item, index}) => {
-                            return this.handleRenderRow(item, index)
-                        }}
-                        keyExtractor={(item, index) => index.toString()}
-                        showsVerticalScrollIndicator={false}
-                    />
-                </View>
+                </View>) : null}
+                <FlatList
+                    style={{flex: 1}}
+                    data={this.getMonthStack()}
+                    renderItem={({item, index}) => {
+                        return this.handleRenderRow(item, index)
+                    }}
+                    keyExtractor={(item, index) => index.toString()}
+                    showsVerticalScrollIndicator={false}
+                />
 
                 {
                     this.props.showButton ?
