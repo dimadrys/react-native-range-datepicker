@@ -291,7 +291,7 @@ export default class RangeDatepicker extends Component {
                 {
                     this.props.showButton ?
                         (
-                            <View style={{...styles.buttonWrapper, ...this.props.buttonContainerStyle}}>
+                            <View style={this.props.buttonContainerStyle}>
                                 <TouchableOpacity
                                     onPress={this.handleConfirmDate}
                                     style={this.props.buttonStyles}>
@@ -315,9 +315,6 @@ const styles = StyleSheet.create({
     buttonWrapper: {
         paddingVertical: 10,
         paddingHorizontal: 15,
-        backgroundColor: 'white',
-        borderTopWidth: 1,
-        borderColor: '#ccc',
         alignItems: 'stretch'
     },
 });
