@@ -196,7 +196,7 @@ export default class RangeDatepicker extends Component {
     }
 
     handleRenderRow(month, index) {
-        const {selectedBackgroundColor, selectedTextColor, todayColor, ignoreMinDate, minDate, maxDate} = this.props;
+        const {selectedBackgroundColor, selectedTextColor, todayColor, ignoreMinDate, minDate, maxDate, firstLastDaysBg, horizMargins } = this.props;
         let {availableDates, startDate, untilDate} = this.state;
 
 
