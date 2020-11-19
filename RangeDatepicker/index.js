@@ -16,8 +16,8 @@ export default class RangeDatepicker extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			startDate: props.startDate && moment(props.startDate, props.selectionFormat),
-			untilDate: props.untilDate && moment(props.untilDate, props.selectionFormat),
+			startDate: props.startDate && moment(props.startDate, 'MM DD'),
+			untilDate: props.untilDate && moment(props.untilDate, 'MM DD'),
 			availableDates: props.availableDates || null
 		}
 
@@ -58,7 +58,7 @@ export default class RangeDatepicker extends Component {
 		showSelectionInfo: true,
 		selectionStyles: {fontSize: 34, color: '#666'},
 		selectionContainerStyles: {},
-		selectionFormat: this.props.selectionFormat,
+		selectionFormat: 'MM DD',
 		showButton: true,
 	};
 
@@ -110,10 +110,10 @@ export default class RangeDatepicker extends Component {
 
 		if(this.state.startDate && !this.state.untilDate)
 		{
-			if(date.format(this.props.selectionFormat) < this.state.startDate.format(this.props.selectionFormat) || this.isInvalidRange(date)){
+			if(date.format('MM DD') < this.state.startDate.format('MM DD') || this.isInvalidRange(date)){
 				startDate = date;
 			}
-			else if(date.format(this.props.selectionFormat) > this.state.startDate.format(this.props.selectionFormat)){
+			else if(date.format('MM DD') > this.state.startDate.format('MM DD')){
 				startDate = this.state.startDate;
 				untilDate = date;
 			}
@@ -140,13 +140,13 @@ export default class RangeDatepicker extends Component {
 		if(availableDates && availableDates.length > 0){
 			//select endDate condition
 			if(startDate && !untilDate) {
-				for(let i = startDate.format(this.props.selectionFormat); i <= date.format(this.props.selectionFormat); i = moment(i, this.props.selectionFormat).add(1, 'days').format(this.props.selectionFormat)){
-					if(availableDates.indexOf(i) == -1 && startDate.format(this.props.selectionFormat) != i)
+				for(let i = startDate.format('MM DD'); i <= date.format('MM DD'); i = moment(i, 'MM DD').add(1, 'days').format('MM DD')){
+					if(availableDates.indexOf(i) == -1 && startDate.format('MM DD') != i)
 						return true;
 				}
 			}
 			//select startDate condition
-			else if(availableDates.indexOf(date.format(this.props.selectionFormat)) == -1)
+			else if(availableDates.indexOf(date.format('MM DD')) == -1)
 				return true;
 		}
 
@@ -205,8 +205,8 @@ export default class RangeDatepicker extends Component {
 				startDate={startDate}
 				untilDate={untilDate}
 				availableDates={availableDates}
-				minDate={minDate ? moment(minDate, this.props.selectionFormat) : minDate}
-				maxDate={maxDate ? moment(maxDate, this.props.selectionFormat) : maxDate}
+				minDate={minDate ? moment(minDate, 'MM DD') : minDate}
+				maxDate={maxDate ? moment(maxDate, 'MM DD') : maxDate}
 				ignoreMinDate={ignoreMinDate}
 				dayProps={{selectedBackgroundColor, selectedTextColor, todayColor}}
 				month={month} />
