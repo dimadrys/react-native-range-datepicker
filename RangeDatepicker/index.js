@@ -16,8 +16,8 @@ export default class RangeDatepicker extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            startDate: props.startDate && moment(props.startDate, 'MM DD'),
-            untilDate: props.untilDate && moment(props.untilDate, 'MM DD'),
+            startDate: props.startDate && moment(props.startDate, 'MMM DD'),
+            untilDate: props.untilDate && moment(props.untilDate, 'MMM DD'),
             availableDates: props.availableDates || null
         }
 
