@@ -226,7 +226,7 @@ export default class RangeDatepicker extends Component {
 
     render() {
         return (
-            <View style={{backgroundColor: '#fff', zIndex: 1000, alignSelf: 'center', width: '100%', flex: 1}}>
+            <View style={{zIndex: 1000, alignSelf: 'center', width: '100%', flex: 1}}>
                 {
                     this.props.showClose || this.props.showReset ?
                         (<View style={{
