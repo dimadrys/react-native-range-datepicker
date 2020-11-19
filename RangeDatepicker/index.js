@@ -228,8 +228,8 @@ export default class RangeDatepicker extends Component {
 
     render() {
         return (
-            <View style={{zIndex: 1000, alignSelf: 'center', width: '100%', flex: 1}}>
-                <View style={{backgroundColor: "#ffffff"}}>
+            <View>
+                <View style={{backgroundColor: "#ffffff", borderRadius: 6, zIndex: 1000, alignSelf: 'center', width: '100%', flex: 1}}>
                     {
                         this.props.showClose || this.props.showReset ?
                             (<View style={{
@@ -291,6 +291,7 @@ export default class RangeDatepicker extends Component {
                         showsVerticalScrollIndicator={false}
                     />
                 </View>
+
                 {
                     this.props.showButton ?
                         (
