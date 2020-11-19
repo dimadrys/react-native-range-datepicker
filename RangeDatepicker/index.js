@@ -34,6 +34,7 @@ export default class RangeDatepicker extends Component {
         maxMonth: 12,
 		horizMargins: 0,
         buttonColor: 'green',
+        buttonTextColor: 'white',
         buttonStyles: {},
         buttonContainerStyle: {},
         showReset: true,
@@ -84,6 +85,7 @@ export default class RangeDatepicker extends Component {
         maxMonth: PropTypes.number,
 		horizMargins: PropTypes.number,
         buttonColor: PropTypes.string,
+        buttonTextColor: PropTypes.string,
         buttonStyles: PropTypes.object,
         buttonContainerStyle: PropTypes.object,
         startDate: PropTypes.string,
@@ -295,7 +297,7 @@ export default class RangeDatepicker extends Component {
                                 <TouchableOpacity
                                     onPress={this.handleConfirmDate}
                                     style={this.props.buttonStyles}>
-                                    <Text>{this.props.buttonText}</Text>
+                                    <Text style={this.props.buttonTextColor}>{this.props.buttonText}</Text>
                                 </TouchableOpacity>
                             </View>
                         ) : null
