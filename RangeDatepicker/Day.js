@@ -30,7 +30,7 @@ export default class Day extends React.Component {
         switch (day.type) {
             case "single" :
                 dayStyle = {
-                    backgroundColor: dayProps.selectedBackgroundColor,
+                    backgroundColor: dayProps.firstLastDaysBg,
                     borderRadius: Math.floor(DEVICE_WIDTH / 7),
                     width: "14.28%"
                 }
@@ -38,7 +38,7 @@ export default class Day extends React.Component {
                 break;
             case "first" :
                 dayStyle = {
-                    backgroundColor: dayProps.selectedBackgroundColor,
+                    backgroundColor: dayProps.firstLastDaysBg,
                     borderBottomLeftRadius: Math.floor(DEVICE_WIDTH / 7),
                     borderTopLeftRadius: Math.floor(DEVICE_WIDTH / 7),
                     width: "14.28%"
@@ -47,7 +47,7 @@ export default class Day extends React.Component {
                 break;
             case "last" :
                 dayStyle = {
-                    backgroundColor: dayProps.selectedBackgroundColor,
+                    backgroundColor: dayProps.firstLastDaysBg,
                     borderBottomRightRadius: Math.floor(DEVICE_WIDTH / 7),
                     borderTopRightRadius: Math.floor(DEVICE_WIDTH / 7),
                     width: "14.28%"
